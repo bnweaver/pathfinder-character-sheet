@@ -2,10 +2,11 @@ package Pathfinder;
 
 public abstract class fantasyAdjust {
 	
-	public static int abilities[] = { abilitiesAdjust.str, abilitiesAdjust.dex, abilitiesAdjust.con, abilitiesAdjust.inte, abilitiesAdjust.wis,
-			abilitiesAdjust.cha };
-	
-	public static void lowFantasy() {
+	 static void lowFantasy() {
+		 
+		 int abilities[] = { abilitiesAdjust.str, abilitiesAdjust.dex, abilitiesAdjust.con, abilitiesAdjust.inte, abilitiesAdjust.wis,
+					abilitiesAdjust.cha };
+		 
 		abilitiesAdjust.pointbuy = 10;
 		
 		for (int x = 0; x < abilities.length; x++) {
@@ -48,6 +49,10 @@ public abstract class fantasyAdjust {
 	}
 	
 	public static void standardFantasy() {
+		
+		int abilities[] = { abilitiesAdjust.str, abilitiesAdjust.dex, abilitiesAdjust.con, abilitiesAdjust.inte, abilitiesAdjust.wis,
+				abilitiesAdjust.cha };
+		
 		abilitiesAdjust.pointbuy = 15;
 		
 		for (int x = 0; x < abilities.length; x++) {
@@ -90,6 +95,10 @@ public abstract class fantasyAdjust {
 	}
 	
 	public static void highFantasy() {
+		
+		int abilities[] = { abilitiesAdjust.str, abilitiesAdjust.dex, abilitiesAdjust.con, abilitiesAdjust.inte, abilitiesAdjust.wis,
+				abilitiesAdjust.cha };
+		
 		abilitiesAdjust.pointbuy = 20;
 		
 		for (int x = 0; x < abilities.length; x++) {
@@ -132,6 +141,10 @@ public abstract class fantasyAdjust {
 	}
 	
 	public static void epicFantasy() {
+		
+		int abilities[] = { abilitiesAdjust.str, abilitiesAdjust.dex, abilitiesAdjust.con, abilitiesAdjust.inte, abilitiesAdjust.wis,
+				abilitiesAdjust.cha };
+		
 		abilitiesAdjust.pointbuy = 25;
 		
 		for (int x = 0; x < abilities.length; x++) {
