@@ -103,10 +103,7 @@ public abstract class abilitiesAdjust {
 					TotalStr += 1;
 					pointbuy -= 4;
 					break;
-				}	
-				
-				System.out.println(TotalStr);
-				
+				}					
 				Sstr = Integer.toString(str);
 				character.textstr.setText(Sstr);
 				Spoints = Integer.toString(pointbuy);
