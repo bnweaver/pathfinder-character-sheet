@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -123,11 +124,13 @@ public class character extends JFrame implements ActionListener{
 	Font newfont2 = new Font("Arial", Font.BOLD, 12);
 	
 	JPanel scores = new JPanel();
+	JButton confirm = new JButton("Confirm");
 	
 	public character () {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
-		add(scores);
+		setLayout(new BorderLayout());
+		add(scores, BorderLayout.CENTER);
+		add(confirm, BorderLayout.SOUTH);
 		
 		scores.setLayout(new GridLayout (9, 2, 2, 2));
 		scores.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
@@ -295,6 +298,8 @@ public class character extends JFrame implements ActionListener{
 		intdec.addActionListener(this);
 		wisdec.addActionListener(this);
 		chadec.addActionListener(this);
+		
+		confirm.addActionListener(this);
 	}
 	
 	public void actionPerformed(ActionEvent a) {
@@ -543,5 +548,9 @@ public class character extends JFrame implements ActionListener{
 			abilitiesAdjust.decScores();
 			abilitiesAdjust.fontColor();
 		}		
+		if (source == confirm) {
+			characterSheet.sheet = new characterSheet();
+			dispose();
+		}
 	}
  }
