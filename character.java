@@ -29,6 +29,14 @@ public class character extends JFrame implements ActionListener{
 			"+2 Wisdom", "+2 Charisma" };
 	String[] fantasy = { "     Choose Point Budget", "     Low Fantasy: 10", "     Standard Fantasy: 15", "     High Fantasy: 20", "     Epic Fantasy: 25" };
 	
+	String raceCh;
+	static String str;
+	static String dex;
+	static String con;
+	static String inte;
+	static String wis;
+	static String cha;
+	
 	JPanel Pstr = new JPanel(new BorderLayout());
 	JPanel Pdex = new JPanel(new BorderLayout());
 	JPanel Pcon = new JPanel(new BorderLayout());
@@ -310,18 +318,23 @@ public class character extends JFrame implements ActionListener{
 		
 			if (choice.equalsIgnoreCase("     dwarf")) {
 				races.dwarf();
+				raceCh = "Dwarf";
 			}
 			if (choice.equalsIgnoreCase("     elf")) {
 				races.elf();
+				raceCh = "Elf";
 			}
 			if (choice.equalsIgnoreCase("     gnome")) {
 				races.gnome();
+				raceCh = "Gnome";
 			}
 			if (choice.equalsIgnoreCase("     halfling")) {
 				races.halfling();
+				raceCh = "Halfling";
 			}
 			if (choice.equalsIgnoreCase("     half-elf")) {
 				races.halfelf();
+				raceCh = "Half-Elf";
 				opmod = JOptionPane.showOptionDialog(null, "This race allows an optional modifier. If a different modifier is desired after selection, please reselect your race. "
 						+ "Please choose one:", "Optional Modifiers", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, abilities, abilities[0]);
 				if (opmod == 0) {
@@ -369,6 +382,7 @@ public class character extends JFrame implements ActionListener{
 			}
 			if (choice.equalsIgnoreCase("     half-orc")) {
 				races.halforc();
+				raceCh = "Half-Orc";
 				opmod = JOptionPane.showOptionDialog(null, "This race allows an optional modifier. If a different modifier is desired after selection, please reselect your race."
 						+ "Please choose one:", "Optional Modifiers", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, abilities, abilities[0]);
 				if (opmod == 0) {
@@ -416,6 +430,7 @@ public class character extends JFrame implements ActionListener{
 			}
 			if (choice.equalsIgnoreCase("     human")) {
 				races.human();
+				raceCh = "Human";
 				opmod = JOptionPane.showOptionDialog(null, "This race allows an optional modifier. If a different modifier is desired after selection, please reselect your race."
 						+ "Please choose one:", "Optional Modifiers", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, abilities, abilities[0]);
 				if (opmod == 0) {
@@ -549,6 +564,30 @@ public class character extends JFrame implements ActionListener{
 			abilitiesAdjust.fontColor();
 		}		
 		if (source == confirm) {
+			characterSheet.chRaceF.setText(raceCh);
+			
+			if (raceCh.equals("Dwarf")) 
+				characterSheet.chSizeF.setText("Medium");
+			else if (raceCh.equals("Elf"))
+				characterSheet.chSizeF.setText("Medium");
+			else if (raceCh.equals("Gnome"))
+				characterSheet.chSizeF.setText("Small");
+			else if (raceCh.equals("Half-Elf"))
+				characterSheet.chSizeF.setText("Medium");
+			else if (raceCh.equals("Half-Orc"))
+				characterSheet.chSizeF.setText("Medium");
+			else if (raceCh.equals("Halfling"))
+				characterSheet.chSizeF.setText("Small");
+			else if (raceCh.equals("Human"))
+				characterSheet.chSizeF.setText("Medium");
+			else {
+				
+			}
+			
+			abilitiesAdjust.abilMod();
+			
+			
+			
 			characterSheet.sheet = new characterSheet();
 			dispose();
 		}
