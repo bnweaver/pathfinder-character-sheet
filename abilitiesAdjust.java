@@ -30,6 +30,43 @@ public abstract class abilitiesAdjust {
 	public static int TotalWis;
 	public static int TotalCha;
 	
+	public static void abilMod() {
+		int strMod = Integer.parseInt(character.totaledStr.getText());
+		int dexMod = Integer.parseInt(character.totaledDex.getText());
+		int conMod = Integer.parseInt(character.totaledCon.getText());
+		int intMod = Integer.parseInt(character.totaledInt.getText());
+		int wisMod = Integer.parseInt(character.totaledWis.getText());
+		int chaMod = Integer.parseInt(character.totaledCha.getText());
+		
+		character.str = modCalc(strMod);
+		character.dex = modCalc(dexMod);
+		character.con = modCalc(conMod);
+		character.inte = modCalc(intMod);
+		character.wis = modCalc(wisMod);
+		character.cha = modCalc(chaMod);
+	}
+	
+	public static String modCalc(int a) {
+		
+		String mod = "";
+		
+		if (a == 6 || a == 7)
+			mod = "-2";
+		if (a == 8 || a == 9)
+			mod = "-1";
+		if (a == 10 || a == 11)
+			mod = "+0";
+		if (a == 12 || a == 13)
+			mod = "+1";
+		if (a == 14 || a == 15)
+			mod = "+2";
+		if (a == 16 || a == 17)
+			mod = "+3";
+		if (a == 18 || a == 19)
+			mod = "+4";
+		return mod;
+	}
+	
 	
 	public static void fontColor() {
 		

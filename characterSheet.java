@@ -69,7 +69,7 @@ public class characterSheet extends JFrame implements ActionListener {
 	JLabel baseS = new JLabel("Base Speed");
 	JLabel wArmorS = new JLabel("With Armor");
 	JLabel chFly = new JLabel("Fly");
-	JLabel maneuverability = new JLabel("/Bonus");
+	JLabel maneuverability = new JLabel("/ Bonus");
 	JLabel chSwim = new JLabel("Swim");
 	JLabel chClimb = new JLabel("Climb");
 	JLabel chBurrow = new JLabel("Burrow");
@@ -78,7 +78,7 @@ public class characterSheet extends JFrame implements ActionListener {
 	JLabel chSpeedF = new JLabel("      ft.    sq.   ");
 	JLabel wArmorF = new JLabel("      ft.   sq.   ");
 	JLabel chFlyF = new JLabel("       ft.   ");
-	JLabel maneuverabilityF = new JLabel("    ");
+	JLabel maneuverabilityF = new JLabel("             ");
 	JLabel chSwimF = new JLabel("      ft.   ");
 	JLabel chClimbF = new JLabel("       ft.   ");
 	JLabel chBurrowF = new JLabel("       ft.   ");
@@ -111,6 +111,7 @@ public class characterSheet extends JFrame implements ActionListener {
 	JLabel mMods = new JLabel("Mod.");
 	
 	String square = "\u25A1";
+	//String square = "\u2611";
 	
 	JLabel acrobatics  = new JLabel(square + " Acrobatics");
 	JLabel appraise = new JLabel(square + " Appraise");
@@ -155,8 +156,8 @@ public class characterSheet extends JFrame implements ActionListener {
 	JTextField chNameF = new JTextField();
 	JTextField chAlignF = new JTextField();
 	JTextField chLevelF = new JTextField();
-	JLabel chRaceF = new JLabel("          ");
-	JLabel chSizeF = new JLabel("          ");
+	static JTextField chRaceF = new JTextField(1);
+	static JTextField chSizeF = new JTextField(1);
 	JTextField chGenF = new JTextField();
 	JTextField chAgeF = new JTextField();
 	
@@ -167,6 +168,8 @@ public class characterSheet extends JFrame implements ActionListener {
 	JTextField chWeightF = new JTextField();
 	JTextField chHairF = new JTextField();
 	JTextField chEyesF = new JTextField();
+	
+	
 	
 	public characterSheet() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -192,7 +195,7 @@ public class characterSheet extends JFrame implements ActionListener {
 		nameL.setLayout(new BoxLayout(nameL, BoxLayout.X_AXIS));
 		name1.add(nameL);
 		nameL.add(chName);
-		nameL.add(Box.createRigidArea(new Dimension(30, 0)));
+		nameL.add(Box.createRigidArea(new Dimension(65, 0)));
 		nameL.add(chAlign);
 		
 		level.add(chLevelF);
@@ -206,19 +209,21 @@ public class characterSheet extends JFrame implements ActionListener {
 		
 		gender2.add(chRaceF);
 		chRaceF.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+		chRaceF.setEditable(false);
 		gender2.add(chSizeF);
 		chSizeF.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+		chSizeF.setEditable(false);
 		gender2.add(chGenF);
 		chGenF.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
 		gender2.add(chAgeF);
 		chAgeF.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
 		
 		genderL.add(chRace);
-		genderL.add(Box.createRigidArea(new Dimension(35, 0)));
+		genderL.add(Box.createRigidArea(new Dimension(55, 0)));
 		genderL.add(chSize);
-		genderL.add(Box.createRigidArea(new Dimension(35, 0)));
+		genderL.add(Box.createRigidArea(new Dimension(60, 0)));
 		genderL.add(chGen);
-		genderL.add(Box.createRigidArea(new Dimension(20, 0)));
+		genderL.add(Box.createRigidArea(new Dimension(35, 0)));
 		genderL.add(chAge);
 		
 		appear2.add(pNameP);
@@ -238,7 +243,7 @@ public class characterSheet extends JFrame implements ActionListener {
 		deityL.setLayout(new BoxLayout(deityL, BoxLayout.X_AXIS));
 		deity.add(deityL);
 		deityL.add(chDeity);
-		deityL.add(Box.createRigidArea(new Dimension(95, 0)));
+		deityL.add(Box.createRigidArea(new Dimension(130, 0)));
 		deityL.add(chHomeland);
 		
 		page.add(stats, BorderLayout.CENTER);
@@ -248,33 +253,6 @@ public class characterSheet extends JFrame implements ActionListener {
 		
 		stats.add(skills);
 		skills.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		
-		skills.add(skTitle);
-		skTitle.add(skTitle2, BorderLayout.NORTH);
-		
-		skillT.setFont(new Font("Arial", Font.BOLD, 14));
-		
-		skTitle2.add(skillT, BorderLayout.CENTER);
-		skIntroL.setLayout(new BoxLayout(skIntroL, BoxLayout.X_AXIS));
-		skIntroL2.setLayout(new BoxLayout(skIntroL2, BoxLayout.X_AXIS));
-		
-		skTitle2.add(skIntro, BorderLayout.SOUTH);
-		skIntro.add(skIntroL);
-		skIntro.add(skIntroL2);
-		
-		skIntroL.add(skNames);
-		skIntroL.add(total);
-		skIntroL.add(abis);
-		skIntroL.add(misc);
-		
-		skIntroL2.add(bonus);
-		skIntroL2.add(mods);
-		skIntroL2.add(ranks);
-		skIntroL2.add(mMods);
-		
-		skTitle.add(skLBonus, BorderLayout.CENTER);
-		skLBonus.add(skillL);
-		skLBonus.add(skBonus);
 		
 		skills.add(speed, BorderLayout.NORTH);
 		speed.add(speed3, BorderLayout.CENTER);
@@ -292,11 +270,11 @@ public class characterSheet extends JFrame implements ActionListener {
 		speed2.add(Box.createRigidArea(new Dimension(10,0)));
 		speed2.add(chSpeed);
 		chSpeed.setFont(new Font("Arial", Font.BOLD, 14));
-		speed2.add(Box.createRigidArea(new Dimension(40, 0)));
+		speed2.add(Box.createRigidArea(new Dimension(70, 0)));
 		
 		speed2.add(chSpeedF);
 		chSpeedF.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-		speed2.add(Box.createRigidArea(new Dimension(20, 0)));
+		speed2.add(Box.createRigidArea(new Dimension(70, 0)));
 		speed2.add(wArmorF);
 		wArmorF.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
 		
@@ -305,9 +283,9 @@ public class characterSheet extends JFrame implements ActionListener {
 		
 		speedL.add(Box.createRigidArea(new Dimension(20, 0)));
 		speedL.add(landL);
-		speedL.add(Box.createRigidArea(new Dimension(48, 0)));
+		speedL.add(Box.createRigidArea(new Dimension(77, 0)));
 		speedL.add(baseS);
-		speedL.add(Box.createRigidArea(new Dimension(22, 0)));
+		speedL.add(Box.createRigidArea(new Dimension(73, 0)));
 		speedL.add(wArmorS);
 		
 		fly.setLayout(new BoxLayout(fly, BoxLayout.X_AXIS));
@@ -320,31 +298,107 @@ public class characterSheet extends JFrame implements ActionListener {
 		chFlyF.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
 		fly.add(maneuverabilityF);
 		maneuverabilityF.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.black));
-		fly.add(Box.createRigidArea(new Dimension(20,0)));
+		fly.add(Box.createRigidArea(new Dimension(35,0)));
 		fly.add(chSwimF);
 		chSwimF.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-		fly.add(Box.createRigidArea(new Dimension(20, 0)));
+		fly.add(Box.createRigidArea(new Dimension(35, 0)));
 		fly.add(chClimbF);
 		chClimbF.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-		fly.add(Box.createRigidArea(new Dimension(20, 0)));
+		fly.add(Box.createRigidArea(new Dimension(35, 0)));
 		fly.add(chBurrowF);
 		chBurrowF.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
 		
-		flyL.add(Box.createRigidArea(new Dimension(15, 0)));
-		flyL.add(chFly);
-		flyL.add(Box.createRigidArea(new Dimension(5, 0)));
-		flyL.add(maneuverability);
 		flyL.add(Box.createRigidArea(new Dimension(20, 0)));
+		flyL.add(chFly);
+		flyL.add(Box.createRigidArea(new Dimension(20, 0)));
+		flyL.add(maneuverability);
+		flyL.add(Box.createRigidArea(new Dimension(40, 0)));
 		flyL.add(chSwim);
-		flyL.add(Box.createRigidArea(new Dimension(30, 0)));
+		flyL.add(Box.createRigidArea(new Dimension(45, 0)));
 		flyL.add(chClimb);
-		flyL.add(Box.createRigidArea(new Dimension(30, 0)));
+		flyL.add(Box.createRigidArea(new Dimension(40, 0)));
 		flyL.add(chBurrow);
+		
+		skills.add(skTitle, BorderLayout.CENTER);
+		skTitle.add(skTitle2, BorderLayout.NORTH);
+		
+		skillT.setFont(new Font("Arial", Font.BOLD, 14));
+		
+		skTitle2.add(skillT, BorderLayout.CENTER);
+		skIntroL.setLayout(new BoxLayout(skIntroL, BoxLayout.X_AXIS));
+		skIntroL2.setLayout(new BoxLayout(skIntroL2, BoxLayout.X_AXIS));
+		
+		skTitle2.add(skIntro, BorderLayout.SOUTH);
+		skIntro.add(skIntroL);
+		skIntro.add(skIntroL2);
+		
+		skIntroL.add(Box.createRigidArea(new Dimension(15, 0)));
+		skIntroL.add(skNames);
+		skIntroL.add(Box.createRigidArea(new Dimension(100, 0)));
+		skIntroL.add(total);
+		skIntroL.add(Box.createRigidArea(new Dimension(70, 0)));
+		skIntroL.add(abis);
+		skIntroL.add(Box.createRigidArea(new Dimension(90, 0)));
+		skIntroL.add(misc);
+		
+		skIntroL2.add(Box.createRigidArea(new Dimension(180, 0)));
+		skIntroL2.add(bonus);
+		skIntroL2.add(Box.createRigidArea(new Dimension(67, 0)));
+		skIntroL2.add(mods);
+		skIntroL2.add(Box.createRigidArea(new Dimension(30, 0)));
+		skIntroL2.add(ranks);
+		skIntroL2.add(Box.createRigidArea(new Dimension(30, 0)));
+		skIntroL2.add(mMods);
+		
+		skTitle.add(skLBonus, BorderLayout.CENTER);
+		skLBonus.add(skillL);
+		
+		skillL.add(acrobatics);
+		skillL.add(appraise);
+		skillL.add(bluff);
+		skillL.add(climb);
+		skillL.add(craft);
+		skillL.add(craft2);
+		skillL.add(craft3);
+		skillL.add(diplomacy);
+		skillL.add(disableDevice);
+		skillL.add(disguise);
+		skillL.add(escapeArtist);
+		skillL.add(skFly);
+		skillL.add(handleAnimal);
+		skillL.add(heal);
+		skillL.add(intimidate);
+		skillL.add(arcana);
+		skillL.add(dungeoneering);
+		skillL.add(engineering);
+		skillL.add(geography);
+		skillL.add(history);
+		skillL.add(local);
+		skillL.add(nature);
+		skillL.add(nobility);
+		skillL.add(planes);
+		skillL.add(religion);
+		skillL.add(linguistics);
+		skillL.add(perception);
+		skillL.add(perform1);
+		skillL.add(perform2);
+		skillL.add(profession1);
+		skillL.add(profession2);
+		skillL.add(ride);
+		skillL.add(senseMotive);
+		skillL.add(sleightHand);
+		skillL.add(spellcraft);
+		skillL.add(stealth);
+		skillL.add(survival);
+		skillL.add(swim);
+		skillL.add(useMagicDevice);
+		
+		skLBonus.add(skBonus);
 		
 		notSkills.add(abiScores);
 		abiScores.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
-		setSize(750, 1000);
+		setSize(960, 1000);
 		setVisible(true);
 	}
 	
