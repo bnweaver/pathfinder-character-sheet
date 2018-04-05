@@ -55,14 +55,16 @@ public class characterSheet extends JFrame implements ActionListener {
 	JPanel flyL = new JPanel();
 	JPanel tempModS = new JPanel(new BorderLayout());
 	
-	JPanel skLBonus = new JPanel(new GridLayout(1, 2));
-	JPanel skBonus = new JPanel(new GridLayout(39, 5));
+	JPanel skLBonus = new JPanel(new BorderLayout());
+	JPanel skBonus = new JPanel(new GridLayout(39, 1));
 	JPanel skillL = new JPanel(new GridLayout(39, 1));
 	JPanel skTitle = new JPanel(new BorderLayout());
 	JPanel skTitle2 = new JPanel(new BorderLayout());
 	JPanel skIntro = new JPanel(new GridLayout(2, 1));
 	JPanel skIntroL = new JPanel();
 	JPanel skIntroL2 = new JPanel();
+	
+	static JPanel skMod = new JPanel();
 	
 	JLabel chSpeed = new JLabel("Speed");
 	JLabel landL = new JLabel("Land");
@@ -169,7 +171,26 @@ public class characterSheet extends JFrame implements ActionListener {
 	JTextField chHairF = new JTextField();
 	JTextField chEyesF = new JTextField();
 	
+	static JTextField tBonus = new JTextField();
+	static JTextField abiMod = new JTextField();
+	static JTextField ranksF = new JTextField();
+	static JTextField misMod = new JTextField();
 	
+	static JLabel strMod = new JLabel("   = Str     ");
+	static JLabel dexMod = new JLabel("   = Dex   ");
+	static JLabel conMod = new JLabel("   = Con   ");
+	static JLabel intMod = new JLabel("   = Int      ");
+	static JLabel wisMod = new JLabel("   = Wis   ");
+	static JLabel chaMod = new JLabel("   = Cha   ");
+	
+	static JLabel add = new JLabel(" + ");
+	
+	JLabel[] modifiers = {dexMod, intMod, chaMod, strMod, intMod, 
+			intMod, intMod, chaMod, dexMod, chaMod, dexMod, dexMod,
+			chaMod, wisMod, chaMod, intMod, intMod, intMod, intMod,
+			intMod, intMod, intMod, intMod, intMod, intMod, intMod,
+			wisMod, chaMod, chaMod, wisMod, wisMod, dexMod, wisMod,
+			dexMod, intMod, dexMod, wisMod, strMod, chaMod};
 	
 	public characterSheet() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -334,16 +355,16 @@ public class characterSheet extends JFrame implements ActionListener {
 		
 		skIntroL.add(Box.createRigidArea(new Dimension(15, 0)));
 		skIntroL.add(skNames);
-		skIntroL.add(Box.createRigidArea(new Dimension(100, 0)));
+		skIntroL.add(Box.createRigidArea(new Dimension(105, 0)));
 		skIntroL.add(total);
-		skIntroL.add(Box.createRigidArea(new Dimension(70, 0)));
+		skIntroL.add(Box.createRigidArea(new Dimension(65, 0)));
 		skIntroL.add(abis);
 		skIntroL.add(Box.createRigidArea(new Dimension(90, 0)));
 		skIntroL.add(misc);
 		
-		skIntroL2.add(Box.createRigidArea(new Dimension(180, 0)));
+		skIntroL2.add(Box.createRigidArea(new Dimension(185, 0)));
 		skIntroL2.add(bonus);
-		skIntroL2.add(Box.createRigidArea(new Dimension(67, 0)));
+		skIntroL2.add(Box.createRigidArea(new Dimension(62, 0)));
 		skIntroL2.add(mods);
 		skIntroL2.add(Box.createRigidArea(new Dimension(30, 0)));
 		skIntroL2.add(ranks);
@@ -351,7 +372,8 @@ public class characterSheet extends JFrame implements ActionListener {
 		skIntroL2.add(mMods);
 		
 		skTitle.add(skLBonus, BorderLayout.CENTER);
-		skLBonus.add(skillL);
+		skLBonus.add(skillL, BorderLayout.WEST);
+		skillL.setBorder(BorderFactory.createEmptyBorder(0, 2, 0, 0));
 		
 		skillL.add(acrobatics);
 		skillL.add(appraise);
@@ -393,7 +415,22 @@ public class characterSheet extends JFrame implements ActionListener {
 		skillL.add(swim);
 		skillL.add(useMagicDevice);
 		
-		skLBonus.add(skBonus);
+		skLBonus.add(skBonus, BorderLayout.CENTER);
+		skBonus.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 20));
+		
+		for (int x = 0; x < modifiers.length; x++) {
+			skMod = new JPanel();
+			skMod.setLayout(new BoxLayout(skMod, BoxLayout.X_AXIS));
+			skBonus.add(skMod);
+			sheetFunctions.skillMods(modifiers[x]);
+			
+			tBonus.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+			tBonus.setEditable(false);
+			abiMod.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.black));
+			abiMod.setEditable(false);
+			ranksF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+			misMod.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+		}
 		
 		notSkills.add(abiScores);
 		abiScores.setBorder(BorderFactory.createLineBorder(Color.BLACK));
