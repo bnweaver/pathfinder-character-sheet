@@ -566,27 +566,25 @@ public class character extends JFrame implements ActionListener{
 		if (source == confirm) {
 			characterSheet.chRaceF.setText(raceCh);
 			
-			if (raceCh.equals("Dwarf")) 
+			if (raceCh.equals("Dwarf") || raceCh.equals("Elf") || raceCh.equals("Half-Elf") 
+					|| raceCh.equals("Half-Orc") || raceCh.equals("Human"))  
 				characterSheet.chSizeF.setText("Medium");
-			else if (raceCh.equals("Elf"))
-				characterSheet.chSizeF.setText("Medium");
-			else if (raceCh.equals("Gnome"))
+			else if (raceCh.equals("Gnome") || raceCh.equals("Halfling"))
 				characterSheet.chSizeF.setText("Small");
-			else if (raceCh.equals("Half-Elf"))
-				characterSheet.chSizeF.setText("Medium");
-			else if (raceCh.equals("Half-Orc"))
-				characterSheet.chSizeF.setText("Medium");
-			else if (raceCh.equals("Halfling"))
-				characterSheet.chSizeF.setText("Small");
-			else if (raceCh.equals("Human"))
-				characterSheet.chSizeF.setText("Medium");
 			else {
 				
 			}
 			
+			if (raceCh.equals("Dwarf") || raceCh.equals("Gnome") || raceCh.equals("Halfling")) {
+				characterSheet.chSpeedF.setText("  20  ft.  4  sq. ");
+				characterSheet.chClimbF.setText("  5   ft.   ");
+				characterSheet.chSwimF.setText(" 5/10  ft.  ");
+			}
+			else if (raceCh.equals("Elf") || raceCh.equals("Half-Elf") || raceCh.equals("Half-Orc") || raceCh.equals("Human")) {
+				characterSheet.chSpeedF.setText("  30  ft.  6  sq. ");
+			}
+				
 			abilitiesAdjust.abilMod();
-			
-			
 			
 			characterSheet.sheet = new characterSheet();
 			dispose();
