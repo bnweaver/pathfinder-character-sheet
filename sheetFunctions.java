@@ -12,7 +12,7 @@ public class sheetFunctions extends characterSheet{
 		if (s.contains("Str")) {
 			
 			tBonus = new JTextField();
-			abiMod = new JTextField();
+			abiMod = new JTextField(character.str);
 			ranksF = new JTextField();
 			misMod = new JTextField();
 			
@@ -31,7 +31,7 @@ public class sheetFunctions extends characterSheet{
 		if (s.contains("Dex")) {
 			
 			tBonus = new JTextField();
-			abiMod = new JTextField();
+			abiMod = new JTextField(character.dex);
 			ranksF = new JTextField();
 			misMod = new JTextField();
 			
@@ -50,7 +50,7 @@ public class sheetFunctions extends characterSheet{
 		if (s.contains("Con")) {
 			
 			tBonus = new JTextField();
-			abiMod = new JTextField();
+			abiMod = new JTextField(character.con);
 			ranksF = new JTextField();
 			misMod = new JTextField();
 			
@@ -69,7 +69,7 @@ public class sheetFunctions extends characterSheet{
 		if (s.contains("Int")) {
 			
 			tBonus = new JTextField();
-			abiMod = new JTextField();
+			abiMod = new JTextField(character.inte);
 			ranksF = new JTextField();
 			misMod = new JTextField();
 			
@@ -88,7 +88,7 @@ public class sheetFunctions extends characterSheet{
 		if (s.contains("Wis")) {
 			
 			tBonus = new JTextField();
-			abiMod = new JTextField();
+			abiMod = new JTextField(character.wis);
 			ranksF = new JTextField();
 			misMod = new JTextField();
 			
@@ -107,7 +107,7 @@ public class sheetFunctions extends characterSheet{
 		if (s.contains("Cha")) {
 			
 			tBonus = new JTextField();
-			abiMod = new JTextField();
+			abiMod = new JTextField(character.cha);
 			ranksF = new JTextField();
 			misMod = new JTextField();
 			

@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -17,7 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class characterSheet extends JFrame implements ActionListener {
+public class characterSheet extends JFrame implements ActionListener, KeyListener {
 	
 	static JFrame sheet;
 
@@ -77,18 +79,18 @@ public class characterSheet extends JFrame implements ActionListener {
 	JLabel chBurrow = new JLabel("Burrow");
 	JLabel tempMod = new JLabel("Temp Modifiers");
 	
-	JLabel chSpeedF = new JLabel("      ft.    sq.   ");
+	static JLabel chSpeedF = new JLabel("      ft.    sq.   ");
 	JLabel wArmorF = new JLabel("      ft.   sq.   ");
 	JLabel chFlyF = new JLabel("       ft.   ");
 	JLabel maneuverabilityF = new JLabel("             ");
-	JLabel chSwimF = new JLabel("      ft.   ");
-	JLabel chClimbF = new JLabel("       ft.   ");
+	static JLabel chSwimF = new JLabel("      ft.   ");
+	static JLabel chClimbF = new JLabel("       ft.   ");
 	JLabel chBurrowF = new JLabel("       ft.   ");
 	JTextField tempModF = new JTextField();
 	
 	JLabel chName = new JLabel("Character Name");
 	JLabel chAlign = new JLabel("Alignment");
-	JLabel chLevel = new JLabel("Character Level");
+	JLabel chLevel = new JLabel("Character Class / Level");
 	JLabel chRace = new JLabel("Race");
 	JLabel chSize = new JLabel("Size");
 	JLabel chGen = new JLabel("Gender");
@@ -424,6 +426,11 @@ public class characterSheet extends JFrame implements ActionListener {
 			skBonus.add(skMod);
 			sheetFunctions.skillMods(modifiers[x]);
 			
+			abiMod.setHorizontalAlignment(JTextField.CENTER);
+			tBonus.setHorizontalAlignment(JTextField.CENTER);
+			ranksF.setHorizontalAlignment(JTextField.CENTER);
+			misMod.setHorizontalAlignment(JTextField.CENTER);
+			
 			tBonus.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
 			tBonus.setEditable(false);
 			abiMod.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.black));
@@ -440,6 +447,24 @@ public class characterSheet extends JFrame implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent a) {
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
 		
 	}
 }
